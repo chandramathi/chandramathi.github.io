@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chandramathi Murugadass</title>
-<meta name="description" content="Chandramathi Murugadass — software engineer and deep learning researcher working on RNA 3D structure from cryo-EM.">
+<meta name="description" content="Chandramathi Murugadass — deep learning engineer focused on model fine-tuning, distributed training and performance engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Fredoka:wght@500;700&family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -201,7 +201,7 @@
   .medal.note { background: var(--chip); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
 
   /* =========================================================
-     THE BRAGGING TIMES — VINTAGE NEWSPAPER
+     THE HUMBLE BRAG — VINTAGE NEWSPAPER
      ========================================================= */
   body.newsprint {
     background:
@@ -294,9 +294,9 @@
 
   /* Footer boxes */
   .np-box h4 { font-family: "Playfair Display", serif; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: .9rem; margin: 0 0 6px; padding-bottom: 4px; border-bottom: 2px solid var(--ink); }
-  .np-index button { all: unset; cursor: pointer; display: flex; justify-content: space-between; width: 100%; box-sizing: border-box; font-size: .86rem; padding: 4px 0; border-bottom: 1px dotted var(--ink-soft); }
-  .np-index button:hover span:first-child { text-decoration: underline; }
-  .np-index button:focus-visible { outline: 1px solid var(--ink); }
+  .np-index button, .np-index a { all: unset; cursor: pointer; display: flex; justify-content: space-between; width: 100%; box-sizing: border-box; font-size: .86rem; padding: 4px 0; border-bottom: 1px dotted var(--ink-soft); }
+  .np-index button:hover span:first-child, .np-index a:hover span:first-child { text-decoration: underline; }
+  .np-index button:focus-visible, .np-index a:focus-visible { outline: 1px solid var(--ink); }
   .classified { font-size: .82rem; line-height: 1.45; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px dotted var(--ink-soft); text-align: left !important; }
   .classified b { text-transform: uppercase; letter-spacing: .06em; }
   .classified button { all: unset; cursor: pointer; text-decoration: underline; }
@@ -398,6 +398,8 @@
   .art img { display: block; width: 100%; height: auto; border-radius: 9px; background: color-mix(in srgb, var(--c) 18%, transparent); min-height: 120px; }
   .art .cap { font-family: "Fredoka", sans-serif; font-weight: 500; font-size: 1rem; margin: 8px 4px 0; }
   .art .cap small { display: block; font-family: "Inter", sans-serif; font-size: .8rem; color: var(--muted); font-weight: 400; }
+  .art .cap .desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-family: "Inter", sans-serif; font-size: .8rem; color: var(--muted); font-weight: 400; margin-top: 4px; font-style: italic; }
+  .lightbox .lb-desc { display: block; max-width: 640px; margin: 8px auto 0; font-family: "Inter", sans-serif; font-size: .92rem; opacity: .85; line-height: 1.5; }
   .art.broken img { display: none; }
   .art.broken::after { content: "🎨 image not found"; display: grid; place-items: center; height: 140px; color: var(--muted); font-size: .9rem; }
   .gallery-empty {
@@ -493,6 +495,8 @@
         <a class="scholar-link" href="#" target="_blank" rel="noopener">Scholar</a>
         <a href="https://github.com/chandramathi" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/chandramathi-murugadass-313b6b65/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://chandramathi-m.medium.com/" target="_blank" rel="noopener">Blog</a>
+        <a href="https://www.youtube.com/@chandramathim" target="_blank" rel="noopener">YouTube</a>
       </div>
       <button id="themeBtn">◐ Toggle dark mode</button>
     </div>
@@ -504,22 +508,26 @@
     <!-- ABOUT -->
     <section role="tabpanel" id="about" aria-labelledby="tab-about">
       <p class="eyebrow">About</p>
-      <h2 class="panel-title">Building deep learning systems<br>that see molecules.</h2>
+      <h2 class="panel-title">Training, fine-tuning and<br>speeding up deep learning models.</h2>
       <hr class="rule">
       <p class="lead">
-        I develop deep learning methods that read cryo-EM density maps to detect and model RNA 3D structure.
-        I recently completed an M.S. in Computer Science at the University of Washington Bothell, where I worked
-        in the DAIS group with Dr. Dong Si on RNA structural motif detection and structure prediction.
+        I'm a deep learning engineer focused on model fine-tuning and performance engineering: getting models to
+        train at scale, run faster, and hold up in production. I recently completed an M.S. in Computer Science at the
+        University of Washington Bothell in the DAIS group with Dr. Dong Si, where I trained and fine-tuned models from
+        3D CNNs and vision transformers to RNA language models, and profiled and compiled the pipeline to serve
+        98K predictions per second.
       </p>
       <p class="lead muted">
         Before research, I spent nine years at Zoho Corporation, growing from Member Technical Staff to Technical
         Architect on Zoho WorkDrive, designing search, event-streaming, security, and storage systems that run across
-        dozens of data centers. I bring that large-scale systems experience to scientific machine learning.
+        dozens of data centers. I bring that production mindset to machine learning: distributed training, profiling, and systems that don't fall over.
       </p>
       <div class="btns">
         <a class="btn primary scholar-link" href="#" target="_blank" rel="noopener">Google Scholar</a>
         <a class="btn" href="https://github.com/chandramathi" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/chandramathi-murugadass-313b6b65/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://chandramathi-m.medium.com/" target="_blank" rel="noopener">Blog on Medium</a>
+        <a class="btn" href="https://www.youtube.com/@chandramathim" target="_blank" rel="noopener">YouTube</a>
         <!-- <a class="btn" href="resume.pdf">CV (PDF)</a> -->
       </div>
     </section>
@@ -527,11 +535,12 @@
     <!-- RESEARCH -->
     <section role="tabpanel" id="research" aria-labelledby="tab-research" hidden>
       <p class="eyebrow">Research</p>
-      <h2 class="panel-title">Deep learning for RNA structure in cryo-EM</h2>
+      <h2 class="panel-title">Deep learning at scale</h2>
       <hr class="rule">
       <p class="lead">
-        RNA folds into recurring structural motifs such as hairpins, bulges, and internal loops. Recognizing them
-        directly in medium- and low-resolution cryo-EM density maps can make RNA model building faster and more reliable.
+        My research applies deep learning to scientific data, classifying and segmenting RNA structural motifs in
+        3D volumes. Most of the interesting work is engineering: training on hundreds of thousands of large 3D samples,
+        fine-tuning pretrained models, and making inference fast enough to scan whole structures.
       </p>
       <div class="btns" style="margin-bottom:36px">
         <a class="btn primary scholar-link" href="#" target="_blank" rel="noopener">
@@ -543,21 +552,27 @@
 
       <div class="grid">
         <div class="card">
-          <h3>3DEM-RNA-Motif Dataset</h3>
-          <p>An open benchmark of 125,000+ segmented cryo-EM density patches across 25 RNA motif types, with an open-source pipeline and CLI for training and classification.</p>
-          <div class="tags"><span class="tag">Cryo-EM</span><span class="tag">Dataset</span><span class="tag">Open source</span></div>
+          <h3>Distributed Training &amp; Performance Engineering</h3>
+          <p>PyTorch DDP across multi-node GPUs in Docker, model parallelism to train 3× larger models, and fault-tolerant checkpointing across 50+ concurrent jobs. TorchDynamo/TorchInductor compilation guided by Nsight profiling.</p>
+          <p class="metric">98K predictions/sec · 23% lower latency · 31% faster pipeline · 78% more reliable jobs</p>
+          <div class="tags"><span class="tag">PyTorch DDP</span><span class="tag">TorchInductor</span><span class="tag">Nsight</span></div>
         </div>
         <div class="card">
-          <h3>Motif Detection &amp; Structure Prediction</h3>
-          <p>3D CNN motif classifiers, FFT-based template matching for localisation, and a UNETR vision-transformer backbone segmentation model validated on experimental maps.</p>
+          <h3>Model Fine-tuning</h3>
+          <p>Fine-tuned RNA-FM, a BERT-style transformer pretrained on 23M sequences, with a hybrid CNN+RNN head to classify 25 structural classes from sequence alone.</p>
+          <p class="metric">0.876 macro F1 · 0.931 top-5 accuracy</p>
+          <div class="tags"><span class="tag">Transformers</span><span class="tag">Hugging Face</span><span class="tag">Fine-tuning</span></div>
+        </div>
+        <div class="card">
+          <h3>3D Vision Models</h3>
+          <p>3D CNN classifiers and a UNETR vision-transformer segmentation backbone, with FFT-based template matching for fast localisation in large volumes.</p>
           <p class="metric">Blind test: macro sensitivity 0.836 · specificity 0.958</p>
-          <div class="tags"><span class="tag">3D CNN</span><span class="tag">UNETR</span><span class="tag">MONAI</span></div>
+          <div class="tags"><span class="tag">3D CNN</span><span class="tag">ViT / UNETR</span><span class="tag">MONAI</span></div>
         </div>
         <div class="card">
-          <h3>Survey: DL for RNA 3D Structure</h3>
-          <p>A systematic review of deep learning methods for reconstructing RNA tertiary structure from cryo-EM maps.</p>
-          <p class="metric">In preparation</p>
-          <div class="tags"><span class="tag">Systematic review</span></div>
+          <h3>Open Benchmark &amp; Training CLI</h3>
+          <p>A public benchmark of 125,000+ labelled 3D samples across 25 classes, released with an open-source pipeline and CLI for training, evaluation and classification.</p>
+          <div class="tags"><span class="tag">Dataset</span><span class="tag">Open source</span><span class="tag">CLI</span></div>
         </div>
       </div>
 
@@ -565,6 +580,7 @@
         <small>M.S. Thesis · UW Bothell, 2026</small>
         <em>RNA Motif Detection, Structure Prediction and Analysis in Cryo-EM Density Maps: A Deep Learning Approach</em>
         <div class="muted" style="font-size:.9rem;margin-top:6px">Committee: Dr. Dong Si (chair), Dr. Jie Hou</div>
+        <div class="muted" style="font-size:.9rem;margin-top:10px">Also in preparation: a systematic review of deep learning methods for RNA 3D structure reconstruction.</div>
       </div>
     </section>
 
@@ -616,7 +632,7 @@
       <div class="grid">
         <div class="card">
           <h3>ARSMA: Agentic RNA Motif Analysis</h3>
-          <p>A Planner–Assistant–Critic–Manager multi-agent system that unifies sequence embeddings, 3D coordinates, and cryo-EM voxels, calling ChimeraX, DSSR, and RCSB tools over MCP to automate motif discovery.</p>
+          <p>A Planner–Assistant–Critic–Manager multi-agent system that unifies sequence embeddings, 3D coordinates, and volumetric data in one feature space, calling ChimeraX, DSSR, and RCSB tools over MCP to automate motif discovery.</p>
           <div class="tags"><span class="tag">Multi-agent</span><span class="tag">MCP</span><span class="tag">PyTorch</span></div>
         </div>
         <div class="card">
@@ -735,7 +751,7 @@
 
     <!-- HUMBLE-BRAGGING: THE BRAGGING TIMES -->
     <section role="tabpanel" id="news" aria-labelledby="tab-news" hidden>
-      <article class="np" aria-label="The Bragging Times">
+      <article class="np" aria-label="The Humble Brag">
 
         <!-- Masthead -->
         <header class="np-top">
@@ -762,7 +778,7 @@
           <div>
             <p class="byline">By Our Campus Correspondent</p>
             <p class="drop"><span class="city">BOTHELL, Wash.</span> — Chandramathi Murugadass has received the Graduate Impact and Innovation Award from the Computing &amp; Software Systems division, presented at UW Bothell's third annual STEM Symposium Awards on June 12, 2026.</p>
-            <p>She was among more than 40 students honoured across the School of STEM's four departments. Her research teaches deep learning models to find RNA structural motifs in cryo-EM density maps.</p>
+            <p>She was among more than 40 students honoured across the School of STEM's four departments. Her work spans distributed training, model fine-tuning and performance engineering, including a deep learning pipeline tuned to serve 98,000 predictions per second.</p>
             <blockquote>"Recognizes graduate students who demonstrate innovation and applied impact through research, collaboration, or technology development."</blockquote>
             <a class="more" href="https://www.uwb.edu/stem/news/2026/07/07/stem-symposium-awards-2026" target="_blank" rel="noopener">Continued at UW Bothell News ↗</a>
           </div>
@@ -779,8 +795,8 @@
           </div>
           <div>
             <figure>
-              <button class="photo mid" type="button" data-video="My Movie 4.mp4" data-poster="TataThumbnail.png" aria-label="Play newsreel: presenting a portrait of JRD Tata to Ratan Tata">
-                <img src="TataThumbnail.jpg" alt="" loading="lazy"><span class="reel" aria-hidden="true"></span>
+              <button class="photo mid" type="button" data-video="TataVideo.mp4" data-poster="TataThumbnail.png" aria-label="Play newsreel: presenting a portrait of JRD Tata to Ratan Tata">
+                <img src="TataThumbnail.png" alt="" loading="lazy"><span class="reel" aria-hidden="true"></span>
               </button>
               <figcaption>Newsreel: click the photograph to play.</figcaption>
             </figure>
@@ -822,16 +838,18 @@
             <button type="button" data-goto="projects"><span>Projects</span><span>p. 4</span></button>
             <button type="button" data-goto="awards"><span>Awards &amp; Honours</span><span>p. 5</span></button>
             <button type="button" data-goto="hobbies"><span>Arts &amp; Leisure</span><span>p. 7</span></button>
+            <a href="https://chandramathi-m.medium.com/" target="_blank" rel="noopener"><span>Opinion &amp; Essays</span><span>Medium ↗</span></a>
+            <a href="https://www.youtube.com/@chandramathim" target="_blank" rel="noopener"><span>Newsreels</span><span>YouTube ↗</span></a>
           </div>
           <div class="np-box">
             <h4>Classifieds</h4>
             <p class="classified"><b>Wanted:</b> More GPU hours. Will trade well-documented code and fresh coffee. Inquire at the DAIS lab.</p>
-            <p class="classified"><b>Available:</b> Engineer-researcher, 9+ years building systems at scale, now fluent in cryo-EM. See <button type="button" data-goto="projects">Projects, p. 4</button>.</p>
+            <p class="classified"><b>Available:</b> Engineer-researcher, 9+ years building systems at scale, now training and fine-tuning models at scale. See <button type="button" data-goto="projects">Projects, p. 4</button>.</p>
             <p class="classified"><b>Lost:</b> One perfectly good weekend, last seen near a thesis deadline. No reward offered.</p>
           </div>
           <div class="np-box">
             <h4>Corrections</h4>
-            <p class="classified">The tag is considered to be misleading by many users, yes we know it was only bragging and we missed the hummility in Humble bragging.</p>
+            <p class="classified">An earlier edition misstated the year of the Grace Hopper Celebration. It was 2025. The Brag regrets the error.</p>
             <p class="classified" style="border-bottom:0">This newspaper is printed with 100% recycled modesty.</p>
           </div>
         </div>
@@ -843,7 +861,7 @@
     <section role="tabpanel" id="hobbies" aria-labelledby="tab-hobbies" hidden>
       <p class="eyebrow">✦ Off the clock ✦</p>
       <h2 class="panel-title">Hobbies &amp; happy places!</h2>
-      <p class="lead">When I'm not staring at density maps, I'm usually making something you can hold, drive, or play. 🎉</p>
+      <p class="lead">When I'm not staring at GPU profiler traces, I'm usually making something you can hold, drive, or play. 🎉</p>
 
       <div class="fun-grid">
         <div class="sticker">
@@ -881,6 +899,8 @@
       <a class="btn scholar-link" href="#" target="_blank" rel="noopener">Scholar</a>
       <a class="btn" href="https://github.com/chandramathi" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/chandramathi-murugadass-313b6b65/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://chandramathi-m.medium.com/" target="_blank" rel="noopener">Blog</a>
+      <a class="btn" href="https://www.youtube.com/@chandramathim" target="_blank" rel="noopener">YouTube</a>
     </div>
   </main>
 </div>
@@ -898,23 +918,25 @@
 </div>
 
 <script>
-  /* ===== EDIT THIS: your artworks =====
-     Upload images to the "art" folder of your chandramathi.github.io repo,
-     then add one line per piece. title / medium / year are optional. */
+  /* =====================================================================
+     EDIT THIS: your artworks
+     Upload images to the "art" folder of your repo, then add one line per piece.
+     Only src is required; title, medium, year and description are optional.
+     File names may contain spaces and brackets; they are handled for you.
+     ===================================================================== */
   const ARTWORKS = [
-    { src: "art/WhatsApp Image 2026-10-19 at 12.15.05.jpeg", title: "Tanjore temple the world heritage site", medium: "Charcoal pencil on paper", year: "2023" },
-    // { src: "art/ganesha.jpg", title: "Ganesha", medium: "Pencil sketch" },
-    { src: "art/WhatsApp Image 2026-10-19 at 12.15.15.jpeg", title: "Shore Temple - Shore + Temple pun intended", medium: "Watercolor on paper", year: "2024", description : "The 1300+ yrs old temple on the beaches of mahabalipuram I took a literal take on it and drew the temple on the shores of the beach" },
+    { src: "art/WhatsApp Image 2026-10-19 at 12.15.05.jpeg", title: "Tanjore Temple, the world heritage site", medium: "Charcoal pencil on paper", year: "2023" },
+    { src: "art/WhatsApp Image 2026-10-19 at 12.15.15.jpeg", title: "Shore Temple - Shore + Temple pun intended", medium: "Watercolor on paper", year: "2024", description: "The 1300+ year old temple on the beaches of Mahabalipuram. I took a literal take on it and drew the temple on the shores of the beach." },
     { src: "art/WhatsApp Image 2026-10-19 at 12.15.54.jpeg", title: "Hibiscus", medium: "Watercolor on paper" },
     { src: "art/WhatsApp Image 2026-10-19 at 12.16.10.jpeg", title: "Rooster", medium: "Watercolor on corrugated paper" },
     { src: "art/WhatsApp Image 2026-10-19 at 12.16.27.jpeg", title: "Miniature Tea Table", medium: "3D Art - synthetic clay" },
     { src: "art/WhatsApp Image 2026-10-19 at 12.16.44.jpeg", title: "Nightingale", medium: "Watercolor on paper" },
     { src: "art/WhatsApp Image 2026-10-19 at 12.17.23.jpeg", title: "Star lilies", medium: "Pencil sketch" },
     { src: "art/IMG_4628-EFFECTS.jpg", title: "Miniature Tree", medium: "Paper on clay" },
-    { src: "art/IMG_2593.jpg", title: "Potrait of a bride", medium: "Acrylic on Canvas" },
-    { src: "art/AD009EA1-2FFB-4E98-BB1E-386AF3720F45.jpeg", title: "Mischievious Boy", medium: "Acrylic on Canvas" },
-    { src: "art/6888A658-3141-4C7A-BAB8-E0DA1B27645D (1).jpeg", title: "King fisher (king of the river)", medium: "Acrylic on Canvas" },
-    { src: "art/654C9C1E-D3F2-4532-859A-9527F75D9CF7.jpg", title: "Lazy afternoon", medium: "Mixed Medium" },
+    { src: "art/IMG_2593.jpg", title: "Portrait of a bride", medium: "Acrylic on Canvas" },
+    { src: "art/AD009EA1-2FFB-4E98-BB1E-386AF3720F45.jpeg", title: "Mischievous Boy", medium: "Acrylic on Canvas" },
+    { src: "art/6888A658-3141-4C7A-BAB8-E0DA1B27645D (1).jpeg", title: "Kingfisher (king of the river)", medium: "Acrylic on Canvas" },
+    { src: "art/654C9C1E-D3F2-4532-859A-9527F75D9CF7.jpg", title: "Lazy afternoon", medium: "Mixed media" },
   ];
 
   /* Where images load from. "" = same repo as this page (recommended).
@@ -991,7 +1013,7 @@
 
   /* ----- Art gallery ----- */
   const gallery = document.getElementById('gallery');
-  const artUrl = a => /^(https?:|data:)/.test(a.src) ? a.src : ART_BASE + a.src;
+  const artUrl = a => /^(https?:|data:)/.test(a.src) ? a.src : encodeURI(ART_BASE + a.src);
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const meta = a => [a.medium, a.year].filter(Boolean).join(' · ');
 
@@ -1002,7 +1024,7 @@
       const b = document.createElement('button');
       b.className = 'art';
       b.innerHTML = `<img src="${esc(artUrl(a))}" alt="${esc(a.title || 'Artwork ' + (i + 1))}" loading="lazy" decoding="async">` +
-        (a.title || meta(a) ? `<div class="cap">${esc(a.title)}${meta(a) ? `<small>${esc(meta(a))}</small>` : ''}</div>` : '');
+        (a.title || meta(a) ? `<div class="cap">${esc(a.title)}${meta(a) ? `<small>${esc(meta(a))}</small>` : ''}${a.description ? `<span class="desc">${esc(a.description)}</span>` : ''}</div>` : '');
       b.querySelector('img').addEventListener('error', () => b.classList.add('broken'));
       b.addEventListener('click', () => openLb(i));
       gallery.appendChild(b);
@@ -1016,7 +1038,7 @@
     lbIndex = (i + ARTWORKS.length) % ARTWORKS.length;
     const a = ARTWORKS[lbIndex];
     lbImg.src = artUrl(a); lbImg.alt = a.title || 'Artwork';
-    lbCap.innerHTML = esc(a.title) + (meta(a) ? `<small>${esc(meta(a))}</small>` : '');
+    lbCap.innerHTML = esc(a.title) + (meta(a) ? `<small>${esc(meta(a))}</small>` : '') + (a.description ? `<span class="lb-desc">${esc(a.description)}</span>` : '');
   }
   function openLb(i) { lastFocus = document.activeElement; showLb(i); lb.classList.add('open'); lb.querySelector('.lb-close').focus(); }
   function closeLb() { lb.classList.remove('open'); lastFocus && lastFocus.focus(); }
@@ -1038,7 +1060,7 @@
     img.addEventListener('error', fail);
   });
 
-  /* ----- Bragging Times: today's date + page index ----- */
+  /* ----- The Humble Brag: today's date + page index ----- */
   try {
     document.getElementById('np-date').textContent = 'Seattle, ' +
       new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
@@ -1075,6 +1097,15 @@
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     try { navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) {}
   }
+
+  /* ----- Back/forward buttons and edited #links switch tabs too ----- */
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    if (!tabs.some(t => t.getAttribute('aria-controls') === id)) return;
+    if (lb.classList.contains('open')) closeLb();
+    if (vb.classList.contains('open')) closeVb();
+    select(id, false);
+  });
 
   /* ----- Dark mode toggle ----- */
   const root = document.documentElement;
