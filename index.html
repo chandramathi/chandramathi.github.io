@@ -178,6 +178,28 @@
   .pub-links { display: flex; gap: 16px; margin-top: 8px; font-size: .86rem; font-weight: 500; }
   .pub-links a::after { content: " ↗"; }
 
+  /* Awards */
+  .honors { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 48px; }
+  .honor {
+    position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 22px 20px; box-shadow: var(--shadow); overflow: hidden;
+  }
+  .honor::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 30%, transparent)); }
+  .honor .kicker { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .honor h3 { font-size: 1.08rem; font-weight: 600; margin: 6px 0 8px; color: var(--text); }
+  .honor p { margin: 0; font-size: .9rem; color: var(--muted); }
+  .award-group { margin-bottom: 40px; }
+  .award-group h3 { font-size: 1.2rem; font-weight: 600; color: var(--text); padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+  .award-list { list-style: none; margin: 0; padding: 0; }
+  .award-list li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px dashed var(--line); font-size: .95rem; }
+  .award-list li:last-child { border-bottom: 0; }
+  .award-list .where { color: var(--muted); font-size: .88rem; }
+  .medal { justify-self: start; font-size: .72rem; font-weight: 600; letter-spacing: .04em; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .medal.gold { background: color-mix(in srgb, var(--gold) 18%, transparent); color: color-mix(in srgb, var(--gold) 75%, var(--text)); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); }
+  .medal.silver { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--muted); border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent); }
+  .medal.bronze { background: color-mix(in srgb, #b0703a 16%, transparent); color: color-mix(in srgb, #b0703a 80%, var(--text)); border: 1px solid color-mix(in srgb, #b0703a 40%, transparent); }
+  .medal.note { background: var(--chip); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
+
   /* =========================================================
      HOBBIES — FUN MODE
      ========================================================= */
@@ -250,6 +272,46 @@
     margin-top: 40px; display: inline-block; font-family: "Fredoka", sans-serif; font-size: 1.05rem;
     background: #1f1a2b; color: #fff; padding: 10px 18px; border-radius: 999px; transform: rotate(-1deg);
   }
+  /* Art gallery */
+  .gallery-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 56px 0 18px; }
+  .gallery-head h3 { font-family: "Fredoka", sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text); }
+  .gallery-head span { color: var(--muted); font-size: .95rem; }
+  .gallery { columns: 3 220px; column-gap: 22px; }
+  .art {
+    --c: #ff6b9a; break-inside: avoid; margin: 0 0 22px; display: block; width: 100%;
+    background: var(--paper); border: 3px solid #1f1a2b; border-radius: 16px; padding: 10px 10px 12px;
+    box-shadow: 5px 5px 0 var(--c); cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transform: rotate(var(--r, 0deg)); transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  }
+  .art:nth-child(4n+2) { --c: #4dabf7; --r: 1deg; }
+  .art:nth-child(4n+3) { --c: #69db7c; --r: -1deg; }
+  .art:nth-child(4n+4) { --c: #ffd43b; --r: .8deg; }
+  .art:hover, .art:focus-visible { transform: rotate(0) scale(1.03); box-shadow: 8px 8px 0 var(--c); outline: none; }
+  .art img { display: block; width: 100%; height: auto; border-radius: 9px; background: color-mix(in srgb, var(--c) 18%, transparent); min-height: 120px; }
+  .art .cap { font-family: "Fredoka", sans-serif; font-weight: 500; font-size: 1rem; margin: 8px 4px 0; }
+  .art .cap small { display: block; font-family: "Inter", sans-serif; font-size: .8rem; color: var(--muted); font-weight: 400; }
+  .art.broken img { display: none; }
+  .art.broken::after { content: "🎨 image not found"; display: grid; place-items: center; height: 140px; color: var(--muted); font-size: .9rem; }
+  .gallery-empty {
+    border: 3px dashed color-mix(in srgb, #7950f2 50%, transparent); border-radius: 20px; padding: 32px;
+    text-align: center; font-family: "Fredoka", sans-serif; font-size: 1.15rem; color: var(--muted);
+  }
+  :root[data-theme="dark"] .art { border-color: #e9e3ff; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .art { border-color: #e9e3ff; } }
+
+  /* Lightbox */
+  .lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(20,14,30,.88); display: none; place-items: center; padding: 24px; }
+  .lightbox.open { display: grid; animation: rise .25s ease both; }
+  .lightbox figure { margin: 0; max-width: min(1100px, 100%); text-align: center; }
+  .lightbox img { max-width: 100%; max-height: 80vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .lightbox figcaption { color: #fff; font-family: "Fredoka", sans-serif; margin-top: 14px; font-size: 1.1rem; }
+  .lightbox figcaption small { display: block; font-family: "Inter", sans-serif; opacity: .7; font-size: .85rem; }
+  .lb-btn { all: unset; cursor: pointer; position: absolute; color: #fff; font-size: 2rem; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.1); }
+  .lb-btn:hover, .lb-btn:focus-visible { background: rgba(255,255,255,.22); }
+  .lb-close { top: 18px; right: 18px; font-size: 1.5rem; }
+  .lb-prev { left: 18px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 18px; top: 50%; transform: translateY(-50%); }
+
   .confetti { position: fixed; top: -20px; pointer-events: none; z-index: 99; font-size: 22px; animation: fall linear forwards; }
 
   @keyframes wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
@@ -280,6 +342,7 @@
     .stat + .stat { border-left: 0; padding-left: 0; }
     .stat { border-bottom: 1px solid var(--line); }
     .pubs li { grid-template-columns: 1fr; gap: 4px; }
+    .award-list li { grid-template-columns: 1fr; gap: 6px; }
     .mobile-links { display: flex !important; }
   }
   .mobile-links { display: none; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
@@ -303,7 +366,8 @@
       <button role="tab" id="tab-research" aria-controls="research" aria-selected="false" tabindex="-1"><span class="num">02</span>Research</button>
       <button role="tab" id="tab-publications" aria-controls="publications" aria-selected="false" tabindex="-1"><span class="num">03</span>Publications</button>
       <button role="tab" id="tab-projects" aria-controls="projects" aria-selected="false" tabindex="-1"><span class="num">04</span>Projects</button>
-      <button role="tab" id="tab-hobbies" aria-controls="hobbies" aria-selected="false" tabindex="-1"><span class="num">05</span>Hobbies</button>
+      <button role="tab" id="tab-awards" aria-controls="awards" aria-selected="false" tabindex="-1"><span class="num">05</span>Awards</button>
+      <button role="tab" id="tab-hobbies" aria-controls="hobbies" aria-selected="false" tabindex="-1"><span class="num">06</span>Hobbies</button>
     </div>
 
     <div class="side-foot">
@@ -467,6 +531,90 @@
       </div>
     </section>
 
+    <!-- AWARDS -->
+    <section role="tabpanel" id="awards" aria-labelledby="tab-awards" hidden>
+      <p class="eyebrow">Awards</p>
+      <h2 class="panel-title">Honors &amp; recognition</h2>
+      <hr class="rule">
+
+      <div class="honors">
+        <div class="honor">
+          <div class="kicker">University of Washington</div>
+          <h3>Graduate Impact &amp; Innovation Award</h3>
+          <p>Computing &amp; Software Systems, with scholarship. Also awarded full funding to represent UW at the Grace Hopper Celebration 2026.</p>
+        </div>
+        <div class="honor">
+          <div class="kicker">CBSE · Top 0.1%</div>
+          <h3>Certificate of Merit, Information Technology</h3>
+          <p>Felicitated by the CBSE board for exceptional performance in Introductory Information Technology, among roughly 2 million AISSE candidates each year.</p>
+        </div>
+        <div class="honor">
+          <div class="kicker">National · Rank 20</div>
+          <h3>Nationwide Biotechnology Olympiad</h3>
+          <p>Secured 20th rank nationally and finished as state runner-up.</p>
+        </div>
+        <div class="honor">
+          <div class="kicker">Zoho Corporation</div>
+          <h3>Best Speaker</h3>
+          <p>Information and Privacy debate competition.</p>
+        </div>
+        <div class="honor">
+          <div class="kicker">ISRO · World Space Week</div>
+          <h3>First Place, Poster &amp; Painting</h3>
+          <p>Won both the poster-making and painting contests held by the Indian Space Research Organisation.</p>
+        </div>
+        <div class="honor">
+          <div class="kicker">Government College of Technology</div>
+          <h3>Academic Excellence Award</h3>
+          <p>Academic year 2011–12.</p>
+        </div>
+      </div>
+
+      <div class="award-group">
+        <h3>Technical &amp; quiz competitions</h3>
+        <ul class="award-list">
+          <li><span class="medal silver">2nd place</span><div>"Impromptu" coding event <div class="where">Soft Sem Quiz, national-level technical symposium</div></div></li>
+          <li><span class="medal silver">2nd place</span><div>Computer Quiz <div class="where">IEEE Student Branch, GCT</div></div></li>
+          <li><span class="medal gold">1st · 3 years</span><div>Maths, Science and Humanities Quiz, three consecutive years <div class="where">HRS</div></div></li>
+        </ul>
+      </div>
+
+      <div class="award-group">
+        <h3>Speaking &amp; business</h3>
+        <ul class="award-list">
+          <li><span class="medal gold">1st place</span><div>"Silver Tongued" debate and elocution contest</div></li>
+          <li><span class="medal gold">Best Proposal</span><div>Best Business Proposal Award for an eco-friendly business plan using Jatropha <div class="where">National-level student competition</div></div></li>
+          <li><span class="medal gold">1st place</span><div>Business Tactics event <div class="where">Soft Sem Quiz</div></div></li>
+          <li><span class="medal gold">1st place</span><div>Marketing event <div class="where">"Login" freshers induction event</div></div></li>
+          <li><span class="medal note">Represented</span><div>School at the district-level interschool championship <div class="where">MaRRS International Spelling Bee</div></div></li>
+        </ul>
+      </div>
+
+      <div class="award-group">
+        <h3>Art &amp; writing</h3>
+        <ul class="award-list">
+          <li><span class="medal gold">1st place</span><div>Poster Making contest <div class="where">Soft Sem Quiz</div></div></li>
+          <li><span class="medal silver">2nd place</span><div>Pencil sketch and collage making <div class="where">"Sangamam" national-level cultural fest</div></div></li>
+          <li><span class="medal silver">2nd place</span><div>Short story writing competition <div class="where">HRS</div></div></li>
+        </ul>
+      </div>
+
+      <div class="award-group">
+        <h3>Community service</h3>
+        <ul class="award-list">
+          <li><span class="medal bronze">Bronze medal</span><div>Recognized for social service <div class="where">HelpAge India and SOS Children's Villages of India</div></div></li>
+        </ul>
+      </div>
+
+      <div class="award-group">
+        <h3>Workshops &amp; summits</h3>
+        <ul class="award-list">
+          <li><span class="medal note">Attended</span><div>Summit on Green Technologies <div class="where">Public Works Department</div></div></li>
+          <li><span class="medal note">Training</span><div>In-plant training in Networking <div class="where">Indian Institute of Hardware Technology</div></div></li>
+        </ul>
+      </div>
+    </section>
+
     <!-- HOBBIES -->
     <section role="tabpanel" id="hobbies" aria-labelledby="tab-hobbies" hidden>
       <p class="eyebrow">✦ Off the clock ✦</p>
@@ -496,6 +644,12 @@
         </div>
       </div>
 
+      <div class="gallery-head">
+        <h3>🎨 My art wall</h3>
+        <span>Paintings and sketches. Click any piece to see it big.</span>
+      </div>
+      <div class="gallery" id="gallery"></div>
+
       <div class="fun-note">Psst… try hovering the cards 👀</div>
     </section>
 
@@ -507,7 +661,27 @@
   </main>
 </div>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <button class="lb-btn lb-close" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" aria-label="Previous">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-btn lb-next" aria-label="Next">›</button>
+</div>
+
 <script>
+  /* ===== EDIT THIS: your artworks =====
+     Upload images to the "art" folder of your chandramathi.github.io repo,
+     then add one line per piece. title / medium / year are optional. */
+  const ARTWORKS = [
+    // { src: "art/sunset.jpg", title: "Sunset over the paddy fields", medium: "Watercolor", year: "2019" },
+    // { src: "art/ganesha.jpg", title: "Ganesha", medium: "Pencil sketch" },
+  ];
+
+  /* Where images load from. "" = same repo as this page (recommended).
+     To serve them from GitHub's jsDelivr CDN instead, use e.g.
+     "https://cdn.jsdelivr.net/gh/chandramathi/chandramathi.github.io@main/"  */
+  const ART_BASE = "";
+
   /* ===== EDIT THIS: paste your Google Scholar profile URL ===== */
   const SCHOLAR_URL = "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID";
   document.querySelectorAll('.scholar-link').forEach(a => a.href = SCHOLAR_URL);
@@ -560,6 +734,53 @@
       document.body.appendChild(s);
       setTimeout(() => s.remove(), 4000);
     }
+  }
+
+  /* ----- Art gallery ----- */
+  const gallery = document.getElementById('gallery');
+  const artUrl = a => /^(https?:|data:)/.test(a.src) ? a.src : ART_BASE + a.src;
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const meta = a => [a.medium, a.year].filter(Boolean).join(' · ');
+
+  if (!ARTWORKS.length) {
+    gallery.outerHTML = '<div class="gallery-empty">🖌️ Fresh paint drying… artworks coming soon!</div>';
+  } else {
+    ARTWORKS.forEach((a, i) => {
+      const b = document.createElement('button');
+      b.className = 'art';
+      b.innerHTML = `<img src="${esc(artUrl(a))}" alt="${esc(a.title || 'Artwork ' + (i + 1))}" loading="lazy" decoding="async">` +
+        (a.title || meta(a) ? `<div class="cap">${esc(a.title)}${meta(a) ? `<small>${esc(meta(a))}</small>` : ''}</div>` : '');
+      b.querySelector('img').addEventListener('error', () => b.classList.add('broken'));
+      b.addEventListener('click', () => openLb(i));
+      gallery.appendChild(b);
+    });
+  }
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
+  let lbIndex = 0, lastFocus = null;
+  function showLb(i) {
+    lbIndex = (i + ARTWORKS.length) % ARTWORKS.length;
+    const a = ARTWORKS[lbIndex];
+    lbImg.src = artUrl(a); lbImg.alt = a.title || 'Artwork';
+    lbCap.innerHTML = esc(a.title) + (meta(a) ? `<small>${esc(meta(a))}</small>` : '');
+  }
+  function openLb(i) { lastFocus = document.activeElement; showLb(i); lb.classList.add('open'); lb.querySelector('.lb-close').focus(); }
+  function closeLb() { lb.classList.remove('open'); lastFocus && lastFocus.focus(); }
+  lb.querySelector('.lb-close').onclick = closeLb;
+  lb.querySelector('.lb-prev').onclick = () => showLb(lbIndex - 1);
+  lb.querySelector('.lb-next').onclick = () => showLb(lbIndex + 1);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+    if (e.key === 'ArrowRight') showLb(lbIndex + 1);
+  });
+
+  /* ----- Cache images with a service worker (sw.js) ----- */
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    try { navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) {}
   }
 
   /* ----- Dark mode toggle ----- */
