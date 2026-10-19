@@ -7,7 +7,7 @@
 <meta name="description" content="Chandramathi Murugadass — software engineer and deep learning researcher working on RNA 3D structure from cryo-EM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Fredoka:wght@500;700&family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Fredoka:wght@500;700&family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   /* =========================================================
      THEME TOKENS
@@ -201,47 +201,105 @@
   .medal.note { background: var(--chip); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
 
   /* =========================================================
-     HUMBLE-BRAGGING — NEWS STYLE
+     THE BRAGGING TIMES — VINTAGE NEWSPAPER
      ========================================================= */
-  :root { --news: #b80000; }
-  :root[data-theme="dark"] { --news: #ff6b6b; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --news: #ff6b6b; } }
+  body.newsprint {
+    background:
+      radial-gradient(ellipse at 10% 0%, rgba(255,250,235,.55), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(120,90,40,.18), transparent 60%),
+      #ddd0b2;
+    background-attachment: fixed;
+  }
+  :root[data-theme="dark"] body.newsprint { background: radial-gradient(ellipse at 50% 0%, #2c261d, #16130f 70%) fixed; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body.newsprint { background: radial-gradient(ellipse at 50% 0%, #2c261d, #16130f 70%) fixed; } }
+  body.newsprint aside { background: linear-gradient(180deg, #221d17, #2d261d); }
+  body.newsprint aside, body.newsprint [role="tab"], body.newsprint .socials a, body.newsprint #themeBtn { color: #d9ccae; }
+  body.newsprint .id h1 { font-family: "UnifrakturMaguntia", serif; font-weight: 400; font-size: 1.6rem; color: #f3ead6; }
+  body.newsprint [role="tab"][aria-selected="true"] { color: #f3ead6; background: rgba(243,234,214,.08); }
+  body.newsprint [role="tab"][aria-selected="true"]::before { background: #f3ead6; }
+  body.newsprint .avatar { filter: grayscale(.85) sepia(.35) contrast(1.05); box-shadow: 0 0 0 3px #d9ccae, 0 0 0 7px rgba(255,255,255,.06); }
+  body.newsprint .socials a { border-color: rgba(217,204,174,.3); }
 
-  .newsbar { display: flex; align-items: stretch; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
-  .newsbar .flag { background: var(--news); color: #fff; font-weight: 700; letter-spacing: .04em; padding: 8px 14px; font-size: .95rem; }
-  :root[data-theme="dark"] .newsbar .flag { color: #1a0505; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .newsbar .flag { color: #1a0505; } }
-  .newsbar .nav { min-width: 0; display: flex; gap: 18px; align-items: center; padding: 0 16px; font-size: .85rem; color: var(--muted); overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
-  .newsbar .nav b { color: var(--text); }
+  #news { --ink: #231f19; --ink-soft: rgba(35,31,25,.55); --sheet: #f4ecd8; }
+  .np {
+    position: relative; color: var(--ink); font-family: "Old Standard TT", Georgia, serif;
+    background:
+      radial-gradient(ellipse at 15% 5%, rgba(255,255,255,.6), transparent 55%),
+      radial-gradient(ellipse at 90% 95%, rgba(140,105,50,.12), transparent 55%),
+      radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(120,90,40,.10)),
+      var(--sheet);
+    padding: 26px clamp(16px, 3.4vw, 38px) 34px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 26px 60px rgba(40,28,10,.28);
+  }
+  .np::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #e8dcbf; transform: translate(7px, 9px); box-shadow: 0 16px 40px rgba(40,28,10,.18); }
+  .np a { color: var(--ink); }
+  .np p { font-size: .95rem; line-height: 1.55; margin: 0 0 10px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
-  .story { display: block; color: inherit; text-decoration: none !important; }
-  .story .thumb { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--chip); }
-  .story .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
-  .story:hover .thumb img { transform: scale(1.04); }
-  .story .thumb.missing img { display: none; }
-  .story .thumb.missing::after { content: "📰"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.4rem;
-    background: repeating-linear-gradient(45deg, var(--chip) 0 10px, transparent 10px 20px); }
-  .story .label { display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--news); margin: 12px 0 6px; }
-  .story h3 { font-family: "Inter", sans-serif; font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: var(--text); margin: 0 0 8px; }
-  .story:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-  .story p { margin: 0 0 10px; color: var(--muted); font-size: .9rem; line-height: 1.55; }
-  .story .src { font-size: .78rem; color: var(--muted); display: flex; gap: 8px; align-items: center; }
-  .story .src::before { content: ""; width: 3px; height: 12px; background: var(--news); display: inline-block; }
+  /* Masthead */
+  .np-top { display: grid; grid-template-columns: 128px minmax(0, 1fr) 128px; align-items: center; gap: 14px; }
+  .ear { border: 1px solid var(--ink); padding: 6px 8px; text-align: center; font-size: .66rem; line-height: 1.35; text-transform: uppercase; letter-spacing: .06em; }
+  .ear b { display: block; font-size: .72rem; margin-bottom: 2px; }
+  .np-title { font-family: "UnifrakturMaguntia", serif; font-weight: 400; font-size: clamp(2.2rem, 5.4vw, 4.6rem); line-height: 1.05; text-align: center; margin: 0; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+  .np .np-motto { text-align: center; font-style: italic; font-size: .8rem; margin: 4px 0 8px; }
+  .np-dateline { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink);
+                 padding: 5px 2px; font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 18px; }
 
-  .lead-story { display: grid; grid-template-columns: 1.35fr 1fr; gap: 26px; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 26px; }
-  .lead-story .thumb { aspect-ratio: 4 / 3; }
-  .lead-story .thumb img { object-position: 50% 38%; }
-  .lead-story .label { margin-top: 0; }
-  .lead-story h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.2; letter-spacing: -.01em; }
-  .lead-story p { font-size: 1rem; color: var(--text); }
-  .lead-story blockquote { margin: 16px 0; padding: 0 0 0 16px; border-left: 3px solid var(--news); font-size: .98rem; font-style: italic; color: var(--muted); }
+  /* Headlines */
+  .np-banner { font-family: "Playfair Display", serif; font-weight: 900; text-transform: uppercase; text-align: center;
+               font-size: clamp(1.7rem, 4.4vw, 3.1rem); line-height: 1.02; letter-spacing: -.01em; margin: 0 0 8px; color: var(--ink); }
+  .np .np-deck { text-align: center; font-style: italic; font-size: 1.02rem; margin: 0 auto 16px; max-width: 760px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+  .np h3 { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.32rem; line-height: 1.15; margin: 0 0 6px; color: var(--ink); }
+  .np h3.small { font-size: 1.08rem; }
+  .np h3 a { text-decoration: none; }
+  .np h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .np .sub { font-style: italic; font-size: .88rem; margin: 0 0 8px; }
+  .np .city { font-weight: 700; letter-spacing: .04em; }
+  .np .byline { font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; margin: 0 0 8px; padding: 3px 0; border-top: 1px solid var(--ink-soft); border-bottom: 1px solid var(--ink-soft); }
+  .np .drop::first-letter { font-family: "Playfair Display", serif; font-weight: 900; float: left; font-size: 3.6rem; line-height: .8; padding: 5px 7px 0 0; }
+  .np blockquote { margin: 12px 0; padding: 8px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+                   font-family: "Playfair Display", serif; font-style: italic; font-size: 1.12rem; line-height: 1.35; text-align: center; }
+  .np .more { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; border-bottom: 1px dotted var(--ink); text-decoration: none; }
+  .np .more:hover { border-bottom-style: solid; text-decoration: none; }
 
-  .story-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px; }
-  .play { position: absolute; left: 12px; bottom: 12px; width: 46px; height: 46px; border-radius: 50%; background: rgba(0,0,0,.72); display: grid; place-items: center; }
-  .play::after { content: ""; border-left: 14px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
-  .story:hover .play { background: var(--news); }
-  button.story { all: unset; cursor: pointer; display: block; align-self: start; }
-  button.story:focus-visible { outline: 2px solid var(--news); outline-offset: 4px; }
+  /* Grids with column rules */
+  .np-row { display: grid; gap: 0; border-bottom: 1px solid var(--ink); padding-bottom: 16px; margin-bottom: 16px; }
+  .np-row > * { padding: 0 16px; min-width: 0; }
+  .np-row > *:first-child { padding-left: 0; }
+  .np-row > *:last-child { padding-right: 0; }
+  .np-row > * + * { border-left: 1px solid var(--ink-soft); }
+  .np-lead { grid-template-columns: 1.45fr 1fr; }
+  .np-two { grid-template-columns: 1fr 1fr; }
+  .np-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .np-foot { grid-template-columns: 1fr 1.2fr 1fr; border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .np-row.np-double { border-bottom: 3px double var(--ink); }
+
+  /* Halftone photographs */
+  .np figure { margin: 0 0 10px; }
+  .photo { position: relative; overflow: hidden; background: repeating-linear-gradient(45deg, rgba(35,31,25,.12) 0 2px, transparent 2px 7px); border: 1px solid var(--ink); }
+  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) sepia(.28) contrast(1.22) brightness(1.03); transition: filter .6s ease; }
+  .photo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(rgba(0,0,0,.6) 30%, transparent 33%) 0 0 / 4px 4px; mix-blend-mode: multiply; opacity: .3; transition: opacity .6s; }
+  .photo:hover img, button.photo:focus-visible img { filter: none; }
+  .photo:hover::after { opacity: 0; }
+  .photo.missing img { visibility: hidden; }
+  .photo.lead { aspect-ratio: 4 / 3; }
+  .photo.mid { aspect-ratio: 16 / 10; }
+  .photo.small { aspect-ratio: 16 / 9; }
+  .np figcaption { font-size: .74rem; font-style: italic; margin-top: 4px; line-height: 1.35; }
+  button.photo { all: unset; box-sizing: border-box; display: block; width: 100%; cursor: pointer; position: relative; overflow: hidden; border: 1px solid var(--ink); }
+  button.photo:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .reel { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; width: 64px; height: 64px; border-radius: 50%;
+          background: rgba(35,31,25,.82); border: 2px solid #f4ecd8; display: grid; place-items: center; transition: transform .25s; }
+  .reel::after { content: ""; border-left: 20px solid #f4ecd8; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 6px; }
+  button.photo:hover .reel { transform: translate(-50%, -50%) scale(1.1); }
+
+  /* Footer boxes */
+  .np-box h4 { font-family: "Playfair Display", serif; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: .9rem; margin: 0 0 6px; padding-bottom: 4px; border-bottom: 2px solid var(--ink); }
+  .np-index button { all: unset; cursor: pointer; display: flex; justify-content: space-between; width: 100%; box-sizing: border-box; font-size: .86rem; padding: 4px 0; border-bottom: 1px dotted var(--ink-soft); }
+  .np-index button:hover span:first-child { text-decoration: underline; }
+  .np-index button:focus-visible { outline: 1px solid var(--ink); }
+  .classified { font-size: .82rem; line-height: 1.45; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px dotted var(--ink-soft); text-align: left !important; }
+  .classified b { text-transform: uppercase; letter-spacing: .06em; }
+  .classified button { all: unset; cursor: pointer; text-decoration: underline; }
 
   /* Video modal */
   .videobox { position: fixed; inset: 0; z-index: 200; background: rgba(10,10,14,.9); display: none; place-items: center; padding: 24px; }
@@ -249,49 +307,6 @@
   .videobox video { max-width: min(1000px, 100%); max-height: 80vh; border-radius: 10px; background: #000; }
   .videobox .vb-msg { color: #fff; text-align: center; max-width: 420px; font-size: 1rem; }
   .videobox .lb-close { top: 18px; right: 18px; }
-
-  /* Print edition (newspaper) */
-  .print-wrap { margin: 64px 0 20px; display: grid; place-items: center; padding: 20px 0 30px; }
-  .print-label { font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 26px; font-weight: 600; }
-  .paper-stack { position: relative; width: min(760px, 100%); }
-  .paper-stack::before, .paper-stack::after {
-    content: ""; position: absolute; inset: 0; background: #e9dfc6; box-shadow: 0 10px 30px rgba(0,0,0,.18);
-  }
-  .paper-stack::before { transform: rotate(3deg) translate(10px, 6px); }
-  .paper-stack::after { transform: rotate(-4deg) translate(-8px, 10px); background: #efe6cf; }
-  .paper {
-    position: relative; z-index: 1; color: #29241d;
-    background:
-      radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.55), transparent 60%),
-      radial-gradient(ellipse at 85% 90%, rgba(120,90,40,.10), transparent 55%),
-      #f5edda;
-    padding: 28px 30px 30px; transform: rotate(-1.2deg);
-    box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 24px 50px rgba(30,20,10,.25);
-    transition: transform .5s ease;
-    font-family: Georgia, "Times New Roman", serif;
-  }
-  .paper:hover { transform: rotate(0deg) scale(1.01); }
-  .paper .fold { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.08) 20%, rgba(0,0,0,.08) 80%, transparent); }
-  .masthead { text-align: center; border-bottom: 3px double #29241d; padding-bottom: 8px; }
-  .masthead .name { font-family: "UnifrakturMaguntia", serif; font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1; }
-  .dateline { display: flex; justify-content: space-between; gap: 10px; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
-              border-bottom: 1px solid #29241d; padding: 6px 0; margin-bottom: 16px; flex-wrap: wrap; }
-  .paper h4 { font-family: "Playfair Display", serif; font-weight: 900; font-size: clamp(1.4rem, 3.4vw, 2.2rem); line-height: 1.08; text-align: center; margin: 0 0 6px; text-transform: uppercase; letter-spacing: -.01em; }
-  .paper .deck { text-align: center; font-style: italic; font-size: .95rem; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(41,36,29,.35); }
-  .paper-cols { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 18px; }
-  .paper-cols > div + div { border-left: 1px solid rgba(41,36,29,.3); padding-left: 18px; }
-  .halftone { position: relative; margin: 0 0 6px; }
-  .halftone img { display: block; width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 40%; filter: grayscale(1) contrast(1.25) sepia(.25) brightness(1.02); }
-  .halftone::after { content: ""; position: absolute; inset: 0; background: radial-gradient(rgba(0,0,0,.55) 30%, transparent 32%) 0 0 / 4px 4px; mix-blend-mode: multiply; opacity: .35; }
-  .paper figcaption { font-size: .72rem; font-style: italic; }
-  .paper p { font-size: .82rem; line-height: 1.5; margin: 0 0 8px; text-align: justify; hyphens: auto; }
-  .paper p.drop::first-letter { font-family: "Playfair Display", serif; font-weight: 900; float: left; font-size: 3.1rem; line-height: .8; padding: 4px 6px 0 0; }
-  .ink-lines { height: 64px; background: repeating-linear-gradient(180deg, rgba(41,36,29,.55) 0 2px, transparent 2px 9px); margin: 4px 0 10px;
-               -webkit-mask: linear-gradient(90deg, #000 70%, rgba(0,0,0,.6)); mask: linear-gradient(90deg, #000 70%, rgba(0,0,0,.6)); }
-  .ink-lines.short { height: 38px; width: 82%; }
-  .inside { border: 1px solid #29241d; padding: 8px 10px; margin-top: 8px; }
-  .inside b { display: block; font-family: "Playfair Display", serif; text-transform: uppercase; font-size: .8rem; letter-spacing: .08em; margin-bottom: 4px; }
-  .inside div { font-size: .76rem; display: flex; justify-content: space-between; border-top: 1px dotted rgba(41,36,29,.5); padding: 3px 0; }
 
   /* =========================================================
      HOBBIES — FUN MODE
@@ -437,13 +452,13 @@
     .stat { border-bottom: 1px solid var(--line); }
     .pubs li { grid-template-columns: 1fr; gap: 4px; }
     .award-list li { grid-template-columns: 1fr; gap: 6px; }
-    .lead-story { grid-template-columns: 1fr; gap: 6px; }
-    .paper { transform: none; padding: 20px 16px; }
-    .paper-cols { grid-template-columns: 1fr; }
-    .halftone img { aspect-ratio: 4 / 3; }
-    .paper-stack::before, .paper-stack::after { transform: none; }
-    .paper-cols > div + div { border-left: 0; padding-left: 0; border-top: 1px solid rgba(41,36,29,.3); padding-top: 12px; }
-    .paper .fold { display: none; }
+    .np-top { grid-template-columns: 1fr; }
+    .ear { display: none; }
+    .np-row { grid-template-columns: 1fr !important; }
+    .np-row > * { padding: 0 !important; }
+    .np-row > * + * { border-left: 0; border-top: 1px solid var(--ink-soft); padding-top: 14px !important; margin-top: 14px; }
+    .np-dateline { justify-content: center; }
+    .np-dateline span:not(#np-date) { display: none; }
     .mobile-links { display: flex !important; }
     #about:not([hidden]) ~ .mobile-links { display: none !important; }
   }
@@ -644,7 +659,7 @@
         <div class="honor">
           <div class="kicker">University of Washington</div>
           <h3>Graduate Impact &amp; Innovation Award</h3>
-          <p>Computing &amp; Software Systems, with scholarship. Also awarded full funding to represent UW at the Grace Hopper Celebration 2025.</p>
+          <p>Computing &amp; Software Systems, with scholarship. Also awarded full funding to represent UW at the Grace Hopper Celebration 2025. <a href="https://www.uwb.edu/stem/news/2026/07/07/stem-symposium-awards-2026" target="_blank" rel="noopener">Read the story ↗</a></p>
         </div>
         <div class="honor">
           <div class="kicker">CBSE · Top 0.1%</div>
@@ -718,94 +733,110 @@
       </div>
     </section>
 
-    <!-- HUMBLE-BRAGGING -->
+    <!-- HUMBLE-BRAGGING: THE BRAGGING TIMES -->
     <section role="tabpanel" id="news" aria-labelledby="tab-news" hidden>
-      <p class="eyebrow">Humble-bragging</p>
-      <h2 class="panel-title">In the news</h2>
-      <div class="newsbar">
-        <span class="flag">LATEST</span>
-        <div class="nav"><b>Top stories</b><span>Conferences</span><span>Interviews</span><span>Women in STEM</span><span>Throwback</span></div>
-      </div>
+      <article class="np" aria-label="The Bragging Times">
 
-      <!-- Lead story -->
-      <a class="story lead-story" href="https://www.uwb.edu/stem/news/2026/02/27/ghc-25-empowers-women-in-masters-programs" target="_blank" rel="noopener">
-        <div class="thumb"><img src="GHCthumbnail.jpeg" alt="Chandramathi at the Grace Hopper Celebration 2025" loading="lazy"></div>
-        <div>
-          <span class="label">Conference</span>
-          <h3>Representing UW Bothell at the Grace Hopper Celebration 2025</h3>
-          <p>One of four master's students sent to Chicago on a scholarship from UW Bothell's Computing &amp; Software Systems division, to the world's largest gathering of women in computing.</p>
-          <blockquote>"Personally, for me this is the first ever conference where I got to meet so many fellow women working in tech."</blockquote>
-          <span class="src">UW Bothell STEM News · 27 Feb 2026</span>
+        <!-- Masthead -->
+        <header class="np-top">
+          <div class="ear"><b>Weather</b>Seattle: overcast, with a strong chance of breakthroughs</div>
+          <h2 class="np-title">The Bragging Times</h2>
+          <div class="ear"><b>Est. 2014</b>Humbly reporting the immodest since day one</div>
+        </header>
+        <p class="np-motto">"All the News That's Fit to Brag"</p>
+        <div class="np-dateline">
+          <span>Vol. XII · No. 7</span>
+          <span id="np-date">Seattle, Washington</span>
+          <span>Price: One Coffee</span>
         </div>
-      </a>
 
-      <div class="story-row">
-        <a class="story" href="https://www.zoho.com/workdrive/digest/interview-with-a-software-developer.html" target="_blank" rel="noopener">
-          <div class="thumb"><img src="https://zdblogs.zohowebstatic.com/sites/workdrive/digest/files/a_look_into_the_life_of_a_zoho_workdrive_developer.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
-          <span class="label">Careers</span>
-          <h3>From developer to engineering leader at Zoho</h3>
-          <p>A conversation with the Zoho audience on growing through curiosity, reading other people's code, and building skills over time.</p>
-          <span class="src">Zoho WorkDrive Digest · Mar 2022</span>
-        </a>
-        <a class="story" href="https://www.zoho.com/blog/workdrive/life-of-a-zoho-workdrive-developer.html" target="_blank" rel="noopener">
-          <div class="thumb"><img src="https://blog.zohowebstatic.com/sites/zblogs/images/workdrive/wd-team-03-2022-01.png" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
-          <span class="label">Interview</span>
-          <h3>Insider scoop: a day building Zoho WorkDrive</h3>
-          <p>Support tickets, design debates, server alerts and architecture: how the team grinds to ship a world-class product.</p>
-          <span class="src">Zoho Blog</span>
-        </a>
-        <a class="story" href="https://www.zoho.com/workdrive/digest/herstory-of-workdrive.html" target="_blank" rel="noopener">
-          <div class="thumb"><img src="https://zdblogs.zohowebstatic.com/sites/workdrive/digest/files/womensday.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
-          <span class="label">Women in STEM</span>
-          <h3>(Her)story: shaping our own destiny in tech</h3>
-          <p>On rewriting an entire architecture layer early on, and beating self-doubt by learning, experimenting and taking calculated risks.</p>
-          <span class="src">Zoho WorkDrive Digest · 8 Mar 2023</span>
-        </a>
-        <button class="story" type="button" data-video="TataVideo.mp4" data-poster="TataThumbnail.jpg" aria-label="Play video: Presenting a portrait of JRD Tata to Ratan Tata">
-          <div class="thumb"><img src="TataThumbnail.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div>
-          <span class="label">Throwback</span>
-          <h3>Gifting my painting of JRD Tata to Ratan Tata</h3>
-          <p>A school-days portrait of JRD Tata, mentor and guide to the business magnate, presented to Ratan Tata in person.</p>
-          <span class="src">▶ Video</span>
-        </button>
-      </div>
+        <!-- Lead story -->
+        <h2 class="np-banner">Local Engineer Wins Impact &amp; Innovation Award</h2>
+        <p class="np-deck">UW Bothell's School of STEM honours graduate researcher at third annual Symposium Awards</p>
 
-      <!-- Print edition -->
-      <div class="print-wrap">
-        <div class="print-label">— The print edition —</div>
-        <div class="paper-stack">
-          <article class="paper" aria-label="Decorative newspaper front page">
-            <div class="fold" aria-hidden="true"></div>
-            <div class="masthead"><div class="name">The Humble Brag</div></div>
-            <div class="dateline"><span>Vol. I · No. 1</span><span>Seattle Edition</span><span>Price: one coffee</span></div>
-            <h4>Engineer Refuses to Stop Building Things</h4>
-            <p class="deck">From WorkDrive servers to cryo-EM maps to watercolours, sources confirm she is "just getting started."</p>
-            <div class="paper-cols">
-              <div>
-                <figure class="halftone" style="margin:0"><img src="GHCthumbnail.jpeg" alt="" loading="lazy"></figure>
-                <figcaption>Pictured: our subject at Grace Hopper 2025, posing with a pair of very large glasses.</figcaption>
-              </div>
-              <div>
-                <p class="drop">SEATTLE — After joining Zoho as an intern in 2014 and rising to Technical Architect on WorkDrive, the engineer traded production servers for density maps, teaching neural networks to find RNA motifs in cryo-EM data at the University of Washington.</p>
-                <div class="ink-lines" aria-hidden="true"></div>
-                <p>Colleagues report she still reads other people's code for fun.</p>
-                <div class="ink-lines short" aria-hidden="true"></div>
-              </div>
-              <div>
-                <p>When not training models, she is said to be painting, 3D-printing tiny houses, or debating at length.</p>
-                <div class="ink-lines" aria-hidden="true"></div>
-                <div class="inside">
-                  <b>Inside</b>
-                  <div><span>Portrait for Ratan Tata</span><span>p. 4</span></div>
-                  <div><span>Herstory of WorkDrive</span><span>p. 6</span></div>
-                  <div><span>A day at Zoho</span><span>p. 9</span></div>
-                  <div><span>Arts &amp; Hobbies</span><span>p. 12</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
+        <div class="np-row np-lead">
+          <figure>
+            <div class="photo lead"><img src="AwardThumbnail.jpg" alt="Chandramathi holding her Graduate Impact and Innovation Award certificate at UW Bothell" loading="lazy" style="object-position:50% 50%"></div>
+            <figcaption>Photograph: the recipient with her certificate on the UW Bothell campus. Hover to develop the photograph in colour.</figcaption>
+          </figure>
+          <div>
+            <p class="byline">By Our Campus Correspondent</p>
+            <p class="drop"><span class="city">BOTHELL, Wash.</span> — Chandramathi Murugadass has received the Graduate Impact and Innovation Award from the Computing &amp; Software Systems division, presented at UW Bothell's third annual STEM Symposium Awards on June 12, 2026.</p>
+            <p>She was among more than 40 students honoured across the School of STEM's four departments. Her research teaches deep learning models to find RNA structural motifs in cryo-EM density maps.</p>
+            <blockquote>"Recognizes graduate students who demonstrate innovation and applied impact through research, collaboration, or technology development."</blockquote>
+            <a class="more" href="https://www.uwb.edu/stem/news/2026/07/07/stem-symposium-awards-2026" target="_blank" rel="noopener">Continued at UW Bothell News ↗</a>
+          </div>
         </div>
-      </div>
+
+        <!-- Second tier -->
+        <div class="np-row np-two np-double">
+          <div>
+            <figure><div class="photo mid"><img src="GHCthumbnail.jpeg" alt="Chandramathi at the Grace Hopper Celebration 2025" loading="lazy" style="object-position:50% 38%"></div></figure>
+            <h3><a href="https://www.uwb.edu/stem/news/2026/02/27/ghc-25-empowers-women-in-masters-programs" target="_blank" rel="noopener">Bothell Delegate Joins Thousands of Women in Tech at Grace Hopper</a></h3>
+            <p class="sub">UW scholarship sends four master's students to Chicago</p>
+            <p><span class="city">CHICAGO</span> — Once the only woman on an engineering management team, Murugadass went to the 2025 Grace Hopper Celebration looking for women with shared experiences, and found them. "Personally, for me this is the first ever conference where I got to meet so many fellow women working in tech," she said.</p>
+            <a class="more" href="https://www.uwb.edu/stem/news/2026/02/27/ghc-25-empowers-women-in-masters-programs" target="_blank" rel="noopener">UW Bothell News · Feb. 27, 2026 ↗</a>
+          </div>
+          <div>
+            <figure>
+              <button class="photo mid" type="button" data-video="TataVideo.mp4" data-poster="TataThumbnail.jpg" aria-label="Play newsreel: presenting a portrait of JRD Tata to Ratan Tata">
+                <img src="TataThumbnail.jpg" alt="" loading="lazy"><span class="reel" aria-hidden="true"></span>
+              </button>
+              <figcaption>Newsreel: click the photograph to play.</figcaption>
+            </figure>
+            <h3>Schoolgirl's Portrait of JRD Tata Presented to Ratan Tata</h3>
+            <p class="sub">From the archives</p>
+            <p><span class="city">FROM THE ARCHIVES</span> — A young student artist presented her painted portrait of JRD Tata, mentor and guide to the business magnate, to Ratan Tata in person, to the evident delight of her classmates.</p>
+            <span class="more">▶ Newsreel above</span>
+          </div>
+        </div>
+
+        <!-- Third tier: the Zoho years -->
+        <div class="np-row np-three">
+          <div>
+            <figure><div class="photo small"><img src="https://zdblogs.zohowebstatic.com/sites/workdrive/digest/files/a_look_into_the_life_of_a_zoho_workdrive_developer.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"></div></figure>
+            <h3 class="small"><a href="https://www.zoho.com/workdrive/digest/interview-with-a-software-developer.html" target="_blank" rel="noopener">Developer to Leader: "Read Other People's Code"</a></h3>
+            <p>In conversation with the Zoho audience, the WorkDrive engineer credits curiosity, reading colleagues' code and patiently building skills for her growth into an engineering leader.</p>
+            <a class="more" href="https://www.zoho.com/workdrive/digest/interview-with-a-software-developer.html" target="_blank" rel="noopener">WorkDrive Digest · Mar. 2022 ↗</a>
+          </div>
+          <div>
+            <figure><div class="photo small"><img src="https://blog.zohowebstatic.com/sites/zblogs/images/workdrive/wd-team-03-2022-01.png" alt="" loading="lazy" referrerpolicy="no-referrer"></div></figure>
+            <h3 class="small"><a href="https://www.zoho.com/blog/workdrive/life-of-a-zoho-workdrive-developer.html" target="_blank" rel="noopener">Inside the Engine Room of Zoho WorkDrive</a></h3>
+            <p>Support tickets, design debates, server alerts, then code and architecture. Drawn to tech by how it connected her village to the world, she joined as an intern in 2014.</p>
+            <a class="more" href="https://www.zoho.com/blog/workdrive/life-of-a-zoho-workdrive-developer.html" target="_blank" rel="noopener">Zoho Blog ↗</a>
+          </div>
+          <div>
+            <figure><div class="photo small"><img src="https://zdblogs.zohowebstatic.com/sites/workdrive/digest/files/womensday.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"></div></figure>
+            <h3 class="small"><a href="https://www.zoho.com/workdrive/digest/herstory-of-workdrive.html" target="_blank" rel="noopener">The (Her)story of WorkDrive</a></h3>
+            <p>She proposed rewriting an entire layer of the architecture, and was given the freedom to do it. "I liked that environment, where your seniors are receptive to your ideas."</p>
+            <a class="more" href="https://www.zoho.com/workdrive/digest/herstory-of-workdrive.html" target="_blank" rel="noopener">WorkDrive Digest · Mar. 8, 2023 ↗</a>
+          </div>
+        </div>
+
+        <!-- Footer: index, classifieds, corrections -->
+        <div class="np-row np-foot">
+          <div class="np-box np-index">
+            <h4>Inside Today</h4>
+            <button type="button" data-goto="research"><span>Research</span><span>p. 2</span></button>
+            <button type="button" data-goto="publications"><span>Publications</span><span>p. 3</span></button>
+            <button type="button" data-goto="projects"><span>Projects</span><span>p. 4</span></button>
+            <button type="button" data-goto="awards"><span>Awards &amp; Honours</span><span>p. 5</span></button>
+            <button type="button" data-goto="hobbies"><span>Arts &amp; Leisure</span><span>p. 7</span></button>
+          </div>
+          <div class="np-box">
+            <h4>Classifieds</h4>
+            <p class="classified"><b>Wanted:</b> More GPU hours. Will trade well-documented code and fresh coffee. Inquire at the DAIS lab.</p>
+            <p class="classified"><b>Available:</b> Engineer-researcher, 9+ years building systems at scale, now fluent in cryo-EM. See <button type="button" data-goto="projects">Projects, p. 4</button>.</p>
+            <p class="classified"><b>Lost:</b> One perfectly good weekend, last seen near a thesis deadline. No reward offered.</p>
+          </div>
+          <div class="np-box">
+            <h4>Corrections</h4>
+            <p class="classified">The tag is considered to be misleading by many users, yes we know it was only bragging and we missed the hummility in Humble bragging.</p>
+            <p class="classified" style="border-bottom:0">This newspaper is printed with 100% recycled modesty.</p>
+          </div>
+        </div>
+
+      </article>
     </section>
 
     <!-- HOBBIES -->
@@ -897,7 +928,13 @@
     });
     const wasFun = document.body.classList.contains('fun');
     document.body.classList.toggle('fun', id === 'hobbies');
+    document.body.classList.toggle('newsprint', id === 'news');
     if (id === 'hobbies' && !wasFun) confetti();
+    const active = tabs.find(t => t.getAttribute('aria-controls') === id);
+    const strip = active && active.parentElement;
+    if (strip && strip.scrollWidth > strip.clientWidth) {
+      strip.scrollTo({ left: active.offsetLeft - (strip.clientWidth - active.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
     if (push) {
       try { history.replaceState(null, '', '#' + id); } catch (e) { /* sandboxed preview: skip URL update */ }
     }
@@ -917,6 +954,13 @@
 
   const start = location.hash.slice(1);
   if (tabs.some(t => t.getAttribute('aria-controls') === start)) select(start, false);
+  /* Opening a #section link: start at the top instead of the browser's anchor jump */
+  if (start) {
+    try { history.scrollRestoration = 'manual'; } catch (e) {}
+    const toTop = () => window.scrollTo(0, 0);
+    requestAnimationFrame(toTop);
+    window.addEventListener('load', () => setTimeout(toTop, 0));
+  }
 
   /* ----- Confetti for the hobbies tab ----- */
   function confetti() {
@@ -977,11 +1021,23 @@
   });
 
   /* ----- News thumbnails: graceful fallback if an image is missing ----- */
-  document.querySelectorAll('#news .thumb img').forEach(img => {
+  document.querySelectorAll('#news .photo img').forEach(img => {
     const fail = () => img.parentElement.classList.add('missing');
     if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) fail();
     img.addEventListener('error', fail);
   });
+
+  /* ----- Bragging Times: today's date + page index ----- */
+  try {
+    document.getElementById('np-date').textContent = 'Seattle, ' +
+      new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  } catch (e) {}
+  document.querySelectorAll('#news [data-goto]').forEach(b =>
+    b.addEventListener('click', () => {
+      select(b.dataset.goto);
+      const t = tabs.find(t => t.getAttribute('aria-controls') === b.dataset.goto);
+      t && t.focus({ preventScroll: true });
+    }));
 
   /* ----- News video player ----- */
   const vb = document.getElementById('videobox'), vbBody = vb.querySelector('.vb-body');
